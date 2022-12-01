@@ -1,0 +1,16 @@
+<!--Property Binding Examples-->
+<input type="text" [value]="default" />
+<button type="button" [disabled]="btnDisabled">Click</button>
+<img [src]="imgSrc"/>
+
+<!--local Reference & passing value to function-->
+<input type="text" #phone />
+<button type="button" (click)="onClick(phone.value)">click me</button>
+
+<!--Two way binding Example with style binding-->
+<div>
+    <button type="button" (click)="des()">-</button> 
+    <button type="button" (click)="inc()">+</button> 
+    <span [style.font-size.px]="px">Font Size {{px}}px</span>
+</div>
+
