@@ -1,6 +1,21 @@
 <h1>This is app component</h1>
-<div>{{ active }}</div>
-<div>{{ 1+1 }}</div>
-<div>{{test()}}</div>
+<!-- <input type="text" [(ngModel)]="title" />
+<span>{{title}}</span> -->
+<button mat-raised-button color="primary">Primary</button>
+<button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button >LIKE</button>
+    <button mat-button >SHARE</button>
 
-<button class="btn btn-primary" type="button">Ok</button>
+
+    <mat-card>
+      <mat-card-header>Header</mat-card-header>
+      <mat-card-content>Simple card</mat-card-content>
+      <img mat-card-lg-image src="https://fujifilm-x.com/wp-content/uploads/2021/01/gfx100s_sample_04_thum-1.jpg" />
+    </mat-card>
+
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1">Option 1</mat-radio-button>
+      <mat-radio-button value="2">Option 2</mat-radio-button>
+    </mat-radio-group>
+
+    <app-playground [fruits] = "array" (updateFruitsArry$)="updateFruits($event)"></app-playground>

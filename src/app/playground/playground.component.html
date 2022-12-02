@@ -1,0 +1,41 @@
+<p>playground works!</p>
+
+<!--Local Reference with @view Child-->
+<input type="text" value="username" #user/>
+
+<hr/>
+<!--ngModel-->
+<input type="text" [(ngModel)]="twoWaybinding" />
+<span>{{twoWaybinding}}</span>
+
+<!-- Attribute Directives-->
+<div [ngClass]="active ? className :'default' ">NgClass</div>
+<div [ngStyle]="background">NgStyle</div>
+<div [hidden]="active">Hidden directive</div>
+<hr/>
+
+<!--Structural Directives-->
+<div *ngIf="!active">I'm here</div>
+
+<ul>
+    <li *ngFor="let i of maxLimit">Loop - {{i}}</li>
+</ul>
+
+
+<!--Creating custom attribute directives-->
+<div appSpecial>
+    Custom Attribute Directive
+</div>
+
+<div appSpecial>
+    Custom Attribute Directive
+</div>
+
+<hr/>
+
+<!--Example of @input & @output decorator and cross component communication-->
+<ul>
+    <li *ngFor="let fruit of arrayFurits">{{fruit}}</li>
+</ul>
+
+<button type="button" (click)="update()">Output Decorator</button>

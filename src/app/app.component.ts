@@ -7,12 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myfirstapp';
-  active = false;
+
+  array = ['apple', 'pineapple'];
   constructor(){
 
   }
-   
-  test = ()=>console.log("hello")
 
+  updateFruits(newFruits: string){
+    this.array.push(newFruits);
+    console.log(this.array);
+  }
 
 }
