@@ -1,0 +1,23 @@
+<mat-card class="card">
+    <mat-card-header>
+      <mat-card-title appSpecial>{{title}}</mat-card-title>
+      <mat-card-subtitle>{{likeCount}} Likes</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="imageUrl" alt="shiba">
+    <mat-card-content>
+      <p>I am {{'running'}} on port {{port}}</p>
+      <p [style.fontSize]="size">Server with Id {{server.id}} is {{server.status}}</p>
+      <p [style]="style">Server status from method: {{getServerStatus()}}</p>
+      <section>
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input type="text" matInput #cardTitle>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="onAddCard(cardTitle.value)">Add Card</button>
+      </section>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [disabled]="isLikeDisabled" (click)="onLike()">LIKE</button>
+      <button mat-button [disabled]="isShareDisabled">SHARE</button>
+    </mat-card-actions>
+  </mat-card>
