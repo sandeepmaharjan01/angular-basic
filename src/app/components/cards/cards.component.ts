@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ImageInfo } from 'src/app/interfaces/imageInfo.interface';
 
 @Component({
   selector: 'app-cards',
@@ -21,6 +22,8 @@ export class CardsComponent implements OnInit {
 
   @Output() titleEvent$ = new EventEmitter<string>();
 
+  imageArry : ImageInfo[] = [];
+
   onAddCard(title: string): void {
     this.titleEvent$.emit(title);
   }
@@ -36,6 +39,12 @@ export class CardsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.imageArry.push({name : 'test', url: ''});
+  }
+
+  addImage(image : ImageInfo)
+  {
+    this.imageArry.push(image);
   }
 
 }
