@@ -1,0 +1,6 @@
+<mat-card>
+    <h3>{{id}}</h3>
+    <ng-container *ngFor="let key of objectKeys(data)">
+      <h5>{{key}}: {{data[key]}}</h5>
+    </ng-container>
+  </mat-card>
