@@ -6,6 +6,7 @@ import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AuthService } from './services/auth.service';
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
+    HttpClientModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

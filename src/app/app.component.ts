@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { PeriodicElement } from './interfaces/PeriodicElement.interface';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -35,11 +33,6 @@ export class AppComponent {
   // }
 
 
-  constructor(private readonly authService: AuthService){
+  constructor(){  }
 
-  }
-
-  onClick(){
-    this.authService.login("username", "password");
-  }
 }
