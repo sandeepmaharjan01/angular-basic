@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IDataGrid } from 'src/app/interfaces/IDataGrid.interface';
 import { PeriodicElement } from 'src/app/interfaces/PeriodicElement.interface';
 import { PeriodicTableService } from 'src/app/services/periodic-table.service';
@@ -9,17 +9,23 @@ import { PeriodicTableService } from 'src/app/services/periodic-table.service';
   templateUrl: './periodic-table.component.html',
   styleUrls: ['./periodic-table.component.css']
 })
-export class PeriodicTableComponent implements OnInit {
+export class PeriodicTableComponent implements OnInit, OnDestroy {
 
   periodicElements:IDataGrid[] = [];
 
   constructor(private readonly http: HttpClient, private periodicTableService: PeriodicTableService) { }
+  ngOnDestroy(): void {
+console.log("destroy");
+  }
 
   ngOnInit(): void {
-    this.http.get<IDataGrid[]>(' http://localhost:3000/periodicElement').subscribe(elements => {
+    this.http.get<IDataGrid[]>('http://localhost:3000/periodicElement').subscribe(elements => {
       this.periodicElements = elements;
       console.log(this.periodicElements);
+
+      this.periodicTableService.periodicElements$$$.next(elements);
     });
+    this.periodicTableService.periodicElements$$$.subscribe(elements => this.periodicElements = [].concat(elements));
   }
 
   columnHeader = {

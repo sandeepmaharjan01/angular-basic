@@ -8,10 +8,22 @@ import { IDataGrid } from 'src/app/interfaces/IDataGrid.interface';
   templateUrl: './data-grid.component.html',
   styleUrls: ['./data-grid.component.css']
 })
-export class DataGridComponent implements OnInit, OnChanges  {
+export class DataGridComponent implements OnInit  {
 
-  @Input() tableData: any[] = [];
+  //@Input() tableData: any[] = [];
   @Input() columnHeader: {[key: string]: string | number;} = {};
+
+  @Input() set tableData(data: IDataGrid[]) {
+    this._tableData = data;
+    this.dataSource = new MatTableDataSource(this._tableData);
+  }
+
+  get tableData(): IDataGrid[] {
+    return this._tableData;
+  }
+
+  _tableData: IDataGrid[] = [];
+
   objectKeys = Object.keys;
   dataSource!: MatTableDataSource<any>;
 
@@ -26,10 +38,10 @@ export class DataGridComponent implements OnInit, OnChanges  {
       this.router.navigate(['item-details', data.id], {state: {data}, relativeTo: this.route}).then();
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-      if (changes['tableData']?.currentValue?.length !== changes['tableData']?.previousValue?.length) {
-        this.dataSource = new MatTableDataSource(this.tableData);
-      }
-    }
+    // ngOnChanges(changes: SimpleChanges): void {
+    //   // if (changes['tableData']?.currentValue?.length !== changes['tableData']?.previousValue?.length) {
+    //   //   this.dataSource = new MatTableDataSource(this.tableData);
+    //   // }
+    // }
 
 }

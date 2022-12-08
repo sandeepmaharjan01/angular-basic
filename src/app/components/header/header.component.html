@@ -6,7 +6,10 @@
       <button mat-menu-item routerLink="/periodic-table">Data Grid</button>
     </mat-menu>
     <span class="spacer"></span>
-    <button (click)="login()" mat-icon-button aria-label="login">
+    <button *ngIf="!isLoggedIn" (click)="login()" mat-icon-button aria-label="login">
       <mat-icon>login</mat-icon>
+    </button>
+    <button *ngIf="isLoggedIn" (click)="logout()" mat-icon-button aria-label="login">
+      <mat-icon>logout</mat-icon>
     </button>
   </mat-toolbar>
